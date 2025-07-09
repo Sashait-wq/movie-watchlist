@@ -1,0 +1,15 @@
+<form class="movie-form">
+  <label class="movie-form__field">
+    <input type="text" class="movie-form__input" placeholder="Назва фільму" />
+  </label>
+
+  <label class="movie-form__field">
+    <select class="movie-form__select">
+      @for (category of categories; track category.id) {
+        <option [value]="category.name">{{ category.name }}</option>
+      }
+    </select>
+  </label>
+
+  <button mat-stroked-button class="movie-form__button">Додати</button>
+</form>
