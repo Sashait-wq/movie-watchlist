@@ -4,10 +4,12 @@ import { addMovie, deleteMovie, filterByGenre, toggleWatched } from './movie.act
 
 export interface MovieState {
   movies: Movie[];
+  filter: 'All' | 'Watched' | 'Unwatched' | string;
 }
 
 const initialState: MovieState = {
-  movies: []
+  movies: [],
+  filter: 'All'
 };
 
 export const movieReducer = createReducer(
@@ -29,6 +31,6 @@ export const movieReducer = createReducer(
   })),
   on(filterByGenre, (state, { genre }) => ({
     ...state,
-    movies: state.movies.filter((movie) => movie.genre === genre)
+    filter: genre
   }))
 );

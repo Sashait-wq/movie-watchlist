@@ -1,1 +1,9 @@
-<p>movie-list works!</p>
+<div class="movie-list">
+  @for (movie of movies; track movie.id) {
+    <app-movie-item
+      (deleteMovie)="deleteMovieEvent.emit($event)"
+      (toggleWatched)="toggleWatchedEvent.emit($event)"
+      [movie]="movie"
+    ></app-movie-item>
+  }
+</div>

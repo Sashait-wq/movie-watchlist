@@ -1,1 +1,15 @@
-<p>movie-item works!</p>
+<div class="movie-item">
+  <div class="movie-item__container">
+    <label>
+      <input type="checkbox" [checked]="movie.watched" (change)="toggleWatched.emit(movie.id)" />
+      <span class="checkmark"></span>
+    </label>
+
+    <div class="movie-item__info">
+      <h3 class="movie-item__title">{{ movie.title }}</h3>
+      <span class="movie-item__genre">{{ movie.genre }}</span>
+    </div>
+  </div>
+
+  <button (click)="deleteMovie.emit(movie.id)" mat-flat-button>Delete movie</button>
+</div>

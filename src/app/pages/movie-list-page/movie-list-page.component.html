@@ -1,2 +1,5 @@
-<app-header />
-<app-movie-form />
+<div class="movie-list-page">
+  <app-header />
+  <app-movie-form (addMovieEvent)="onAddMovie($event)" />
+  <app-movie-list (deleteMovieEvent)="onDeleteMovie($event)" [movies]="filteredMovies" />
+</div>

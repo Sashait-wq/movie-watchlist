@@ -1,33 +1,35 @@
-<form class="movie-form" [formGroup]="form">
-  <div class="movie-form__field">
-    <input
-      type="text"
-      class="movie-form__input"
-      placeholder="Назва фільму"
-      formControlName="title"
-    />
+<div class="container">
+  <form class="movie-form" [formGroup]="form">
+    <div class="movie-form__field">
+      <input
+        type="text"
+        class="movie-form__input"
+        placeholder="Назва фільму"
+        formControlName="title"
+      />
 
-    @if (form.controls.title.hasError('required') && form.controls.title.touched) {
-      <small>Це поле обовязкове</small>
-    }
-  </div>
+      @if (form.controls.title.hasError('required') && form.controls.title.touched) {
+        <small class="movie-form__error">Це поле обовязкове</small>
+      }
+    </div>
 
-  <div class="movie-form__field">
-    <label>
-      <select class="movie-form__select" formControlName="genre">
-        @for (category of categories; track category.id) {
-          <option [value]="category.name">{{ category.name }}</option>
-        }
-      </select>
-    </label>
-  </div>
+    <div class="movie-form__field">
+      <label>
+        <select class="movie-form__select" formControlName="genre">
+          @for (category of categories; track category.id) {
+            <option [value]="category.name">{{ category.name }}</option>
+          }
+        </select>
+      </label>
+    </div>
 
-  <button
-    mat-stroked-button
-    class="movie-form__button"
-    [disabled]="form.invalid"
-    (click)="addMovie()"
-  >
-    Додати
-  </button>
-</form>
+    <button
+      mat-stroked-button
+      class="movie-form__button"
+      [disabled]="form.invalid"
+      (click)="addMovie()"
+    >
+      Додати
+    </button>
+  </form>
+</div>

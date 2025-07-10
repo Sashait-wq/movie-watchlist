@@ -1,13 +1,19 @@
+.container {
+  width: 100%;
+  padding: var(--paddings);
+  border-bottom: 1px solid #ccc;
+}
+
 .movie-form {
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
   padding: 1.5rem;
-  max-width: 400px;
-  margin: auto;
+  max-width: 450px;
+  width: 100%;
   border-radius: 12px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  background-color: var(--bg-color-w);
+  box-shadow: var(--bsh-color);
 
   &__field {
     display: flex;
@@ -19,7 +25,7 @@
   &__input,
   &__select {
     padding: 0.8rem;
-    font-size: 1rem;
+    font-size: var(--font-size-text);
     border: 1px solid #ccc;
     border-radius: 8px;
     transition: border-color 0.2s;
@@ -27,11 +33,15 @@
 
   &__input:focus,
   &__select:focus {
-    border-color: #3b82f6;
+    border-color: var(--b-color-f);
     outline: none;
   }
 
   &__button {
     align-self: flex-end;
+  }
+
+  &__error {
+    color: red;
   }
 }

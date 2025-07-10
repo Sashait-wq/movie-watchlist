@@ -1,10 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Category } from '../../interfaces/category.interface';
-import { Store } from '@ngrx/store';
 import { Form } from '../../interfaces/form.interface';
-import { addMovie } from '../../store/movie.action';
 import { Movie } from '../../interfaces/movie.interface';
 
 @Component({
@@ -14,7 +12,7 @@ import { Movie } from '../../interfaces/movie.interface';
   styleUrl: './movie-form.component.scss'
 })
 export class MovieFormComponent {
-  private store = inject(Store);
+  @Output() addMovieEvent = new EventEmitter<Movie>();
 
   public form = new FormGroup<Form>({
     title: new FormControl(null, Validators.required),
@@ -42,7 +40,7 @@ export class MovieFormComponent {
       watched: false
     };
 
-    this.store.dispatch(addMovie({ movie }));
+    this.addMovieEvent.emit(movie);
 
     this.form.reset(
       {

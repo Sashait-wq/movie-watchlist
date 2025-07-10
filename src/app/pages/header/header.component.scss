@@ -1,12 +1,12 @@
 .header {
-  padding: 1rem 0.9rem;
+  padding: var(--paddings);
   border-bottom: 1px solid #ccc;
   width: 100%;
 
   &__container {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: var(--gaps);
   }
 
   &__logo {
@@ -16,8 +16,8 @@
   }
 
   &__title {
-    font-size: 1.5rem;
-    color: #232323;
-    letter-spacing: 0.1rem;
+    font-size: var(--font-size-heading);
+    color: var(--text-color-black);
+    letter-spacing: var(--l-spacing);
   }
 }
