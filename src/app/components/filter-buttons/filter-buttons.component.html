@@ -1,1 +1,9 @@
-<p>filter-buttons works!</p>
+<div aria-label="Filter" class="filter-buttons">
+  <button [disabled]="movies.length <= 0" mat-stroked-button (click)="feltered('All')">All</button>
+  <button [disabled]="movies.length <= 0" mat-stroked-button (click)="feltered('Watched')">
+    Watched
+  </button>
+  <button [disabled]="movies.length <= 0" mat-stroked-button (click)="feltered('Unwatched')">
+    Unwatched
+  </button>
+</div>

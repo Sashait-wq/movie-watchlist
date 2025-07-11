@@ -1,5 +1,15 @@
 <div class="movie-list-page">
   <app-header />
   <app-movie-form (addMovieEvent)="onAddMovie($event)" />
-  <app-movie-list (deleteMovieEvent)="onDeleteMovie($event)" [movies]="filteredMovies" />
+  <app-filter-buttons
+    (filterByGenre)="onFilterByGenre($event)"
+    *ngIf="selectMovie$ | async as movie"
+    [movies]="movie"
+  />
+  <app-movie-list
+    (toggleWatchedEvent)="onToggleWatched($event)"
+    (deleteMovieEvent)="onDeleteMovie($event)"
+    *ngIf="selectFilteredMovies$ | async as movies"
+    [movies]="movies"
+  />
 </div>
