@@ -8,6 +8,7 @@ import { Movie } from '../../interfaces/movie.interface';
 import { addMovie, deleteMovie, filterByGenre, toggleWatched } from '../../store/movie.action';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { FilterButtonsComponent } from '../../components/filter-buttons/filter-buttons.component';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-movie-list-page',
@@ -24,15 +25,29 @@ import { FilterButtonsComponent } from '../../components/filter-buttons/filter-b
 })
 export class MovieListPageComponent {
   private store = inject(Store);
+  private snackBar = inject(MatSnackBar);
+
   public selectFilteredMovies$ = this.store.select(selectFilteredMovies);
   public selectMovie$ = this.store.select(selectMovie);
 
   public onAddMovie(movie: Movie): void {
     this.store.dispatch(addMovie({ movie }));
+
+    this.snackBar.open('Movie added!', 'Close', {
+      duration: 3000,
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom'
+    });
   }
 
   public onDeleteMovie(movieId: number): void {
     this.store.dispatch(deleteMovie({ movieId }));
+
+    this.snackBar.open('The movie has been deleted!', 'Close', {
+      duration: 3000,
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom'
+    });
   }
 
   public onToggleWatched(movieId: number): void {
